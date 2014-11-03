@@ -37,3 +37,4 @@ credentials.yml
 
 Gemfile.lock
 *.swp
+*.log

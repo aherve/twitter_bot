@@ -4,9 +4,15 @@ require 'bundler'
 require 'twitter'
 require 'pry'
 require 'yaml'
+require 'logger'
 Bundler.setup(:default)
 
 class TwitterLikerBot
+
+  def logger
+    file = File.open(File.expand_path('../twitter_liker_bot.log',__FILE__), 'w')
+    @logger ||= Logger.new(file)
+  end
 
   def credentials
     @creds ||= YAML.load_file(
@@ -51,18 +57,18 @@ class TwitterLikerBot
   end
 
   def favorite_feed_selection!
-    puts "favoriting tweets"
+    logger.info "favoriting tweets"
     # Favorite already favorited tweets:
     timeline_selection.each{|t| 
-      print "favoriting tweet #{t} ..." ;
+      logger.info "favoriting tweet #{t} ..." ;
       client.favorite t
-      print "...done\n"
+      logger.info "...done"
     }
-    puts 'favoriting done'
+    logger.info 'favoriting done'
   end
 
   def sleep!
-    puts "going to sleep for #{sleep_for/60} minutes"
+    logger.info "going to sleep for #{sleep_for/60} minutes"
     sleep(sleep_for)
   end
 
