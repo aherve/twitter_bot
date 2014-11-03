@@ -1,7 +1,9 @@
 twitter_bot
 ===========
 
-twitter liking machine
+this shameful twitter bot will favorite many tweets in your timeline.
+
+Perhaps this could generate one or two subscriptions to your channel ;)
 
 #Usage:
 
