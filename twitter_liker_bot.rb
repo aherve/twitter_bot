@@ -10,7 +10,7 @@ Bundler.setup(:default)
 class TwitterLikerBot
 
   def logger
-    file = File.open(File.expand_path('../twitter_liker_bot.log',__FILE__), 'w')
+    file = File.open(File.expand_path('../twitter_liker_bot.log',__FILE__), 'a')
     @logger ||= Logger.new(file)
   end
 
